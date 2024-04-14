@@ -26,16 +26,16 @@ try {
         }
     }
 
-    $date = filter_input(INPUT_POST, 'date', FILTER_SANITIZE_NUMBER_INT);
+    // $date = filter_input(INPUT_POST, 'date', FILTER_SANITIZE_NUMBER_INT);
 
-    if(empty($date)) {
-        $errors['date'] = 'Veuillez rentrer une date';
-    } else {
-        $isOk = filter_var($date, FILTER_VALIDATE_INT);
-        if(!$isOk) {
-            $errors['date'] = 'Date invalide';
-        }
-    }
+    // if(empty($date)) {
+    //     $errors['date'] = 'Veuillez rentrer une date';
+    // } else {
+    //     $isOk = filter_var($date, FILTER_VALIDATE_INT);
+    //     if(!$isOk) {
+    //         $errors['date'] = 'Date invalide';
+    //     }
+    // }
 
     if(empty($errors)) {
         $module = new Module();

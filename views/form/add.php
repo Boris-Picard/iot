@@ -4,6 +4,11 @@
             <div class="col-12 mt-md-5">
                 <div class="row justify-content-center ">
                     <div class="col-12 col-md-8">
+                        <?php if (isset($alert)) { ?>
+                            <div class="alert alert-success" role="alert">
+                                <?= $alert['success'] ?>
+                            </div>
+                        <?php } ?>
                         <div class="d-flex shadow-lg p-5 flex-column rounded-5">
                             <form action="" method="post" novalidate>
                                 <h1 class="text-uppercase text-center fw-bold mb-5">
