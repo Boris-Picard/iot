@@ -51,4 +51,17 @@ class Module
 
         return (int) $sth->rowCount() > 0;
     }
+
+    public static function getAll(): array|null
+    {
+        $pdo = Database::connect();
+
+        $sql = 'SELECT * FROM `modules`';
+
+        $sth = $pdo->query($sql);
+
+        $sth->execute();
+
+        return $sth->fetchAll(PDO::FETCH_OBJ);
+    }
 }
