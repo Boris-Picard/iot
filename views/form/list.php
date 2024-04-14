@@ -12,7 +12,7 @@
                     <tr>
                         <th scope="row"><?= $list->name ?></th>
                         <td><?= $list->location ?></td>
-                        <td></td>
+                        <td><a href="/controllers/form/update-ctrl.php?id=<?= $list->id_modules ?>"><i class="bi bi-pencil-square btn btn-sm btn-light"></i></a></td>
                     </tr>
             <?php }
             } ?>

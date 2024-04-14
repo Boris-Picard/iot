@@ -64,4 +64,19 @@ class Module
 
         return $sth->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public static function get(int $id): object|null
+    {
+        $pdo = Database::connect();
+
+        $sql = 'SELECT * FROM `modules` WHERE `id_modules`=:id';
+
+        $sth= $pdo->prepare($sql);
+
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+
+        $sth->execute();
+
+        return $sth->fetch(PDO::FETCH_OBJ);
+    }
 }
