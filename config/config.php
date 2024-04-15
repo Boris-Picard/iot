@@ -2,6 +2,7 @@
 
 //Gestion des erreurs
 $errors = [];
+$valid = [];
 
 // Connexion a la bdd
 define('DSN', 'mysql:host=localhost;dbname=iot');

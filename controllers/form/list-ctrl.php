@@ -1,5 +1,6 @@
 <?php 
 require_once __DIR__ . '/../../models/Module.php';
+require_once __DIR__ . '/../../models/Module_Data.php';
 
 $listPage = true;
 try {

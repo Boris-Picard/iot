@@ -7,11 +7,10 @@ require_once __DIR__ . '/../../config/config.php';
 
 $addPage = true;
 try {
-    $valid = [];
-
-    $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+        $name = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_SPECIAL_CHARS);
 
         if (empty($name)) {
             $errors['name'] = 'Veuillez rentrer un nom';

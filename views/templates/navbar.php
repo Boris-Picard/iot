@@ -13,7 +13,7 @@
                     <a class="nav-link mx-2 <?= $addPage ? 'active' : "" ?>" aria-current="page" href="/controllers/form/add-ctrl.php">Add</a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
-                    <a class="nav-link mx-2" href="#">
+                    <a class="nav-link mx-2" href="/controllers/form/add-ctrl.php">
                         <img src="/public/assets/img/logo.png" height="80" />
                     </a>
                 </li>

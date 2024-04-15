@@ -67,7 +67,10 @@ class Module
     {
         $pdo = Database::connect();
 
-        $sql = 'SELECT * FROM `modules`';
+        $sql = 'SELECT * 
+        FROM `modules`
+        INNER JOIN `module_data` ON `modules`.`id_modules`= `module_data`.`id_modules`
+        INNER JOIN `module_status` ON `modules`.`id_modules`=`module_status`.`id_modules`;';
 
         $sth = $pdo->query($sql);
 
@@ -82,7 +85,7 @@ class Module
 
         $sql = 'SELECT * FROM `modules` WHERE `id_modules`=:id';
 
-        $sth= $pdo->prepare($sql);
+        $sth = $pdo->prepare($sql);
 
         $sth->bindValue(':id', $id, PDO::PARAM_INT);
 
@@ -91,7 +94,8 @@ class Module
         return $sth->fetch(PDO::FETCH_OBJ);
     }
 
-    public static function delete(int $id) {
+    public static function delete(int $id)
+    {
         $pdo = Database::connect();
 
         $sql = 'DELETE FROM `modules` WHERE `id_modules`=:id;';
