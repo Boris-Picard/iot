@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../../models/Module.php';
 require_once __DIR__ . '/../../models/Module_Data.php';
+require_once __DIR__ . '/../../models/Module_Status.php';
 require_once __DIR__ . '/../../config/config.php';
 
 $addPage = true;
@@ -68,9 +69,18 @@ try {
 
             $data = $moduleData->insert();
 
+            $moduleStatus = new ModuleStatus();
+
+            $moduleStatus->setIsOperational(true);
+            $moduleStatus->setDuration(0);
+            $moduleStatus->setDataCount(0);
+            $moduleStatus->setIdModules($id_modules);
+
+            $status = $moduleStatus->insert();
+
             $pdo->commit();
 
-            if ($resultModule || $data) {
+            if ($resultModule || $data || $status) {
                 $alert['success'] = 'La donnée a bien été ajouté !';
             }
         } catch (PDOException $e) {
