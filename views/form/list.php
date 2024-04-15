@@ -12,7 +12,10 @@
                     <tr>
                         <th scope="row"><?= $list->name ?></th>
                         <td><?= $list->location ?></td>
-                        <td><a href="/controllers/form/update-ctrl.php?id=<?= $list->id_modules ?>"><i class="bi bi-pencil-square btn btn-sm btn-light"></i></a></td>
+                        <td>
+                            <a href="/controllers/form/update-ctrl.php?id=<?= $list->id_modules ?>"><i class="bi bi-pencil-square btn btn-sm btn-light"></i></a>
+                            <a href="/controllers/form/delete-ctrl.php?id=<?= $list->id_modules ?>"><i class="bi bi-trash-fill btn btn-sm btn-danger"></i></a>
+                        </td>
                     </tr>
             <?php }
             } ?>

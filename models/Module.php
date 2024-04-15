@@ -79,4 +79,18 @@ class Module
 
         return $sth->fetch(PDO::FETCH_OBJ);
     }
+
+    public static function delete(int $id) {
+        $pdo = Database::connect();
+
+        $sql = 'DELETE FROM `modules` WHERE `id_modules`=:id;';
+
+        $sth = $pdo->prepare($sql);
+
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+
+        $sth->execute();
+
+        return $sth->rowCount() > 0;
+    }
 }
