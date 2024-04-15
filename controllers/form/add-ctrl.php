@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../../models/Module.php';
+require_once __DIR__ . '/../../models/Module_Data.php';
 require_once __DIR__ . '/../../config/config.php';
 
 $addPage = true;
@@ -46,16 +47,34 @@ try {
     }
 
     if (empty($errors)) {
-        $module = new Module();
+        try {
+            $pdo = Database::connect();
+            $pdo->beginTransaction();
 
-        $module->setName($name);
-        $module->setDescription($description);
-        $module->setMeasurementType($type);
+            $module = new Module();
 
-        $result = $module->insert();
+            $module->setName($name);
+            $module->setDescription($description);
+            $module->setMeasurementType($type);
 
-        if ($result) {
-            $alert['success'] = 'La donnée a bien été ajouté !';
+            $resultModule = $module->insert();
+
+            $id_modules = $pdo->lastInsertId();
+
+            $moduleData = new ModuleData();
+
+            $moduleData->setModuleValue(rand(1, 100));
+            $moduleData->setIdModules($id_modules);
+
+            $data = $moduleData->insert();
+
+            $pdo->commit();
+
+            if ($resultModule || $data) {
+                $alert['success'] = 'La donnée a bien été ajouté !';
+            }
+        } catch (PDOException $e) {
+            $pdo->rollback();
         }
     }
 } catch (PDOException $e) {
