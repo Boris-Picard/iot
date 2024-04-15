@@ -2,6 +2,7 @@
         <thead>
             <tr>
                 <th scope="col">Nom</th>
+                <th scope="col">Type</th>
                 <th scope="col">Active</th>
                 <th scope="col">Valeur</th>
                 <th scope="col">Duration</th>
@@ -16,6 +17,7 @@
                 foreach ($lists as $list) { ?>
                     <tr>
                         <th scope="row"><?= $list->name ?></th>
+                        <th scope="row"><?= $list->measurement_type ?></th>
                         <td><?= $list->is_operational ? "true" : "false" ?></td>
                         <td><?= $list->module_value ?></td>
                         <td><?= $list->duration ?></td>

@@ -108,4 +108,24 @@ class Module
 
         return $sth->rowCount() > 0;
     }
+
+    public function update(): bool
+    {
+        $pdo = Database::connect();
+
+        $sql = 'UPDATE `modules`
+        SET `name`=:name, `description`=:description, `measurement_type`=:measurement_type
+        WHERE `id_modules`=:id_modules;';
+
+        $sth = $pdo->prepare($sql);
+
+        $sth->bindValue(':name', $this->getName());
+        $sth->bindValue(':description', $this->getDescription());
+        $sth->bindValue(':measurement_type', $this->getMeasurementType());
+        $sth->bindValue(':id_modules', $this->getIdModules(), PDO::PARAM_INT);
+
+        $result = $sth->execute();
+
+        return $result;
+    }
 }
