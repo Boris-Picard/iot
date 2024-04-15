@@ -11,20 +11,19 @@
                     Ajouter un nouveau module
                 </h1>
                 <div class="form-floating mb-4">
-                    <input type="text" class="form-control" name="name" id="name" placeholder="name@example.com">
+                    <input type="text" class="form-control <?= isset($errors['name']) ? "is-invalid" : "" ?>" name="name" id="name" placeholder="Ex : Capteur de température" value="<?= $name ?? "" ?>" required>
                     <label for="name">Nom<span class="text-danger">*</span></label>
                     <small class="text-danger mx-1"><?= $errors['name'] ?? '' ?></small>
                 </div>
-                <div class="form-floating mb-5">
-                    <input type="text" class="form-control" name="location" id="location" placeholder="Password">
-                    <label for="location">Localisation<span class="text-danger">*</span></label>
-                    <small class="text-danger mx-1"><?= $errors['location'] ?? '' ?></small>
-                </div>
-                <h2 class="text-center mb-5">Mesures</h2>
                 <div class="form-floating mb-4">
-                    <input type="date" class="form-control" name="date" id="date" placeholder="Password">
-                    <label for="date">Date<span class="text-danger">*</span></label>
-                    <small class="text-danger mx-1"><?= $errors['date'] ?? '' ?></small>
+                    <textarea type="text" class="form-control <?= isset($errors['description']) ? "is-invalid" : "" ?>" name="description" id="description" placeholder="Capteur de température industriel" required><?= $description ?? "" ?></textarea>
+                    <label for="description">Description<span class="text-danger">*</span></label>
+                    <small class="text-danger mx-1"><?= $errors['description'] ?? '' ?></small>
+                </div>
+                <div class="form-floating mb-4">
+                    <input type="text" class="form-control <?= isset($errors['type']) ? "is-invalid" : "" ?>" name="type" id="type" placeholder="Ex: Température" value="<?= $type ?? "" ?>" required>
+                    <label for="type">Type de mesure<span class="text-danger">*</span></label>
+                    <small class="text-danger mx-1"><?= $errors['type'] ?? '' ?></small>
                 </div>
                 <button type="submit" class="text-uppercase bg-secondary btn text-white fw-bold w-100 py-3">Ajouter</button>
             </form>

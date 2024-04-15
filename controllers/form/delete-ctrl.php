@@ -8,6 +8,7 @@ try {
 
     if($deleteModule) {
         header('location: /controllers/form/list-ctrl.php');
+        die;
     }
 } catch (PDOException $e) {
     die('error : ' . $e->getMessage());

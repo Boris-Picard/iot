@@ -6,7 +6,8 @@ class Module
 {
     private int $id_modules;
     private string $name;
-    private string $location;
+    private string $description;
+    private string $measurement_type;
 
     public function setIdModules(int $id_modules)
     {
@@ -26,26 +27,36 @@ class Module
         return $this->name;
     }
 
-    public function setLocation(string $location)
+    public function setDescription(string $description)
     {
-        $this->location = $location;
+        $this->description = $description;
     }
-    public function getLocation(): string
+    public function getDescription(): string
     {
-        return $this->location;
+        return $this->description;
+    }
+
+    public function setMeasurementType(string $measurement_type)
+    {
+        $this->measurement_type = $measurement_type;
+    }
+    public function getMeasurementType(): string
+    {
+        return $this->measurement_type;
     }
 
     public function insert(): bool
     {
         $pdo = Database::connect();
 
-        $sql = 'INSERT INTO `modules` (`name`, `location`)
-        VALUES (:name, :location);';
+        $sql = 'INSERT INTO `modules` (`name`, `description`, `measurement_type`)
+        VALUES (:name, :description, :measurement_type);';
 
         $sth = $pdo->prepare($sql);
 
         $sth->bindValue(':name', $this->getName());
-        $sth->bindValue(':location', $this->getLocation());
+        $sth->bindValue(':description', $this->getDescription());
+        $sth->bindValue(':measurement_type', $this->getMeasurementType());
 
         $sth->execute();
 

@@ -1,16 +1,29 @@
 CREATE TABLE modules(
    id_modules INT AUTO_INCREMENT,
-   name VARCHAR(255)  NOT NULL,
-   location VARCHAR(150)  NOT NULL,
-   created_at DATE NOT NULL,
+   name VARCHAR(200)  NOT NULL,
+   description TEXT,
+   measurement_type VARCHAR(50)  NOT NULL,
    PRIMARY KEY(id_modules)
 );
 
-CREATE TABLE measurements(
-   id_measurements INT AUTO_INCREMENT,
-   measurement_value DECIMAL(10,2)   NOT NULL,
-   measurement_date DATE NOT NULL,
+CREATE TABLE module_data(
+   id_module_data INT AUTO_INCREMENT,
+   module_value DECIMAL(10,2)  ,
+   module_timestamp DATETIME,
    id_modules INT NOT NULL,
-   PRIMARY KEY(id_measurements),
+   PRIMARY KEY(id_module_data),
+   UNIQUE(id_modules),
+   FOREIGN KEY(id_modules) REFERENCES modules(id_modules)
+);
+
+CREATE TABLE module_status(
+   id_module_status INT AUTO_INCREMENT,
+   is_operational BOOLEAN,
+   duration SMALLINT,
+   data_count SMALLINT,
+   updated_at DATETIME,
+   id_modules INT NOT NULL,
+   PRIMARY KEY(id_module_status),
+   UNIQUE(id_modules),
    FOREIGN KEY(id_modules) REFERENCES modules(id_modules)
 );

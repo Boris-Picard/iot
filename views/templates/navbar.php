@@ -10,10 +10,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mx-auto align-items-center">
                 <li class="nav-item">
-                    <a class="nav-link mx-2 active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link mx-2" href="/controllers/form/add-ctrl.php">Ajouter</a>
+                    <a class="nav-link mx-2 <?= $addPage ? 'active' : "" ?>" aria-current="page" href="/controllers/form/add-ctrl.php">Add</a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
                     <a class="nav-link mx-2" href="#">
@@ -21,14 +18,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link mx-2" href="#">Pricing</a>
-                </li>
-                <li class="nav-item dropdown">
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Blog</a></li>
-                        <li><a class="dropdown-item" href="#">About Us</a></li>
-                        <li><a class="dropdown-item" href="#">Contact us</a></li>
-                    </ul>
+                    <a class="nav-link mx-2 <?= $listPage ? 'active' : "" ?>" href="/controllers/form/list-ctrl.php">List</a>
                 </li>
             </ul>
         </div>

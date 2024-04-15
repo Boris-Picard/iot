@@ -3,3 +3,12 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+textarea {
+  height: 100px !important;
+}
+
+.form-control:focus::placeholder {
+  color: black !important;
+  opacity: 0.6;
+}
