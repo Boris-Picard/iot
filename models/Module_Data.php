@@ -62,7 +62,7 @@ class ModuleData
         return $sth->rowCount() > 0;
     }
 
-    public static function get(int $id): object|null
+    public static function getAll(int $id): array|null
     {
         $pdo = Database::connect();
 
@@ -76,6 +76,6 @@ class ModuleData
 
         $sth->execute();
 
-        return $sth->fetch(PDO::FETCH_OBJ);
+        return $sth->fetchAll(PDO::FETCH_OBJ);
     }
 }

@@ -9,16 +9,18 @@
     <script src="/public/assets/js/value.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
     <script>
-        const chart = async () => {
+        const chart = () => {
             const ctx = document.getElementById('myChart');
-
+            console.log(values);
             new Chart(ctx, {
                 type: 'line',
                 data: {
-                    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                    labels: timestamps,
                     datasets: [{
                         label: '# of Votes',
-                        data: [12, 19, 3, 5, 2, 3],
+                        data: values.map((val) => {
+                            return val
+                        }),
                         borderWidth: 1
                     }]
                 },
@@ -34,7 +36,7 @@
         chart();
     </script>
 <?php } ?>
-<!-- <?php var_dump($getModule); ?> -->
+<?php var_dump($getModule); ?>
 </body>
 
 </html>
