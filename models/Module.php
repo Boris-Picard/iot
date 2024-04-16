@@ -83,7 +83,11 @@ class Module
     {
         $pdo = Database::connect();
 
-        $sql = 'SELECT * FROM `modules` WHERE `id_modules`=:id';
+        $sql = 'SELECT * 
+        FROM `modules`
+        INNER JOIN `module_data` ON `modules`.`id_modules`= `module_data`.`id_modules`
+        INNER JOIN `module_status` ON `modules`.`id_modules`=`module_status`.`id_modules`
+        WHERE `modules`.`id_modules`=:id;';
 
         $sth = $pdo->prepare($sql);
 

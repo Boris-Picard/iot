@@ -2,6 +2,8 @@
 require_once __DIR__ . '/../../models/Module.php';
 
 try {
+    $viewModule = true;
+
     $id = intval(filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT));
 
     $getModule = Module::get($id);
