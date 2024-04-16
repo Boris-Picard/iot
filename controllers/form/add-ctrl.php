@@ -1,11 +1,12 @@
 <?php
-
+session_start();
 require_once __DIR__ . '/../../models/Module.php';
 require_once __DIR__ . '/../../models/Module_Data.php';
 require_once __DIR__ . '/../../models/Module_Status.php';
 require_once __DIR__ . '/../../config/config.php';
 
 $addPage = true;
+
 try {
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -67,10 +68,16 @@ try {
 
                 $id_modules = $pdo->lastInsertId();
 
+                if (!isset($_SESSION['ids'])) {
+                    $_SESSION['ids'] = [];
+                }
+
+                $_SESSION['ids'][] = $id_modules;
+
                 $moduleData = new ModuleData();
 
                 $randomInt = rand(10, 1000);
-                $randomDec = $randomInt / 100;
+                $randomDec = $randomInt / 10;
                 $moduleData->setModuleValue($randomDec);
                 $moduleData->setIdModules($id_modules);
 
