@@ -16,7 +16,7 @@ const value = () => {
         timestamps.push(item.module_timestamp);
         values.push(item.module_value);
       });
-
+      
       // Si myChart existe déjà, nous mettons à jour ses valeurs. Sinon, nous appelons le graphique de base.
       if (myChart) {
         myChart.data.labels = timestamps;

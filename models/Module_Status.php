@@ -165,26 +165,16 @@ class ModuleStatus
     public static function updateOperational(int $id, bool $op = true): bool
     {
         $pdo = Database::connect();
-        $pdo->beginTransaction();
 
-        try {
-            $sqlSelect = 'SELECT `is_operational` FROM `module_status` WHERE `id_modules` = :id FOR UPDATE';
-            $sthSelect = $pdo->prepare($sqlSelect);
-            $sthSelect->bindValue(':id', $id, PDO::PARAM_INT);
-            $sthSelect->execute();
-            $current = $sthSelect->fetchColumn();
+        $sql = 'UPDATE `module_status` SET `is_operational` = :is_operational WHERE `id_modules` = :id';
 
-            $sqlUpdate = 'UPDATE `module_status` SET `is_operational` = :op WHERE `id_modules` = :id';
-            $sthUpdate = $pdo->prepare($sqlUpdate);
-            $sthUpdate->bindValue(':id', $id, PDO::PARAM_INT);
-            $sthUpdate->bindValue(':is_operational', $op);
-            $sthUpdate->execute();
+        $sth = $pdo->prepare($sql);
 
-            $pdo->commit();
-            return true;
-        } catch (PDOException $e) {
-            $pdo->rollBack();
-            return false;
-        }
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+        $sth->bindValue(':is_operational', $op, PDO::PARAM_BOOL);
+
+        $result = $sth->execute();
+
+        return $result;
     }
 }

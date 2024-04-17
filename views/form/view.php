@@ -13,11 +13,7 @@
             <div class="card">
                 <div class="card-body text-center flex-column d-flex gap-3">
                     <span>Type de données : <?= $moduleStatus[0]->measurement_type ?></span>
-                    <?php if ($moduleStatus[0]->is_operational) { ?>
-                        <span class="text-success fw-bold">En fonction</span>
-                    <?php } else { ?>
-                        <span class="text-danger fw-bold">Ne fonctionne pas</span>
-                    <?php } ?>
+                    <span id="operational" class="fw-bold"></span>
                     <span>Derniere donnée : <span id="value"></span></span>
                     <span>Durée de fonctionnement : <span id="duration"></span></span>
                     <span>Nombre de données : <span id="data_count"></span></span>

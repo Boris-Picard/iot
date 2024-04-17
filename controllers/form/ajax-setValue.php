@@ -18,13 +18,13 @@ try {
         $result = $newData->insert();
         if ($result) {
             foreach ($ids as $id) {
-                ModuleStatus::updateDataValue($id);
-                $getModuleData = ModuleData::get($id);
                 if ($randomDec > 50) {
                     ModuleStatus::updateOperational($id, false);
                 } else {
-                    ModuleStatus::updateOperational($id, true);
+                    ModuleStatus::updateOperational($id);
                 }
+                ModuleStatus::updateDataValue($id);
+                $getModuleData = ModuleData::get($id);
             }
         }
     }

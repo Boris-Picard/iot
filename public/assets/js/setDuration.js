@@ -21,12 +21,25 @@ const setDuration = () => {
 
       let dataCountElement = document.getElementById("data_count");
       if (dataCountElement) {
-        dataCountElement.innerHTML = data[0].data_count;
+        dataCountElement.innerHTML = data[0].data_count + 1;
       }
 
       let lastUpdatedElement = document.getElementById("last_updated");
       if (lastUpdatedElement) {
         lastUpdatedElement.innerHTML = data[0].updated_at;
+      }
+
+      let isOperational = document.getElementById("operational");
+      if (isOperational) {
+        if (data[0].is_operational === 1) {
+          isOperational.innerHTML = "En fonction";
+          isOperational.classList.remove("text-danger");
+          isOperational.classList.add("text-success");
+        } else {
+          isOperational.innerHTML = "Ne fonctionne pas";
+          isOperational.classList.remove("text-success");
+          isOperational.classList.add("text-danger");
+        }
       }
     })
     .catch((error) => {
