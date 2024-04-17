@@ -6,7 +6,10 @@ const setValue = () => {
       return response.json();
     })
     .then((data) => {
-      document.getElementById("value").innerHTML = data.module_value;
+      let moduleValue = document.getElementById("value");
+      if (moduleValue) {
+        moduleValue.innerHTML = data.module_value;
+      }
     })
     .catch((error) => {
       console.error("error val : ", error);
@@ -15,4 +18,4 @@ const setValue = () => {
 
 setInterval(() => {
   setValue();
-}, 3600);
+}, 60000);

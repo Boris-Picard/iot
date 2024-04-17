@@ -20,11 +20,18 @@ try {
             foreach ($ids as $id) {
                 ModuleStatus::updateDataValue($id);
                 $getModuleData = ModuleData::get($id);
+                if ($randomDec > 50) {
+                    ModuleStatus::updateOperational($id, false);
+                } else {
+                    ModuleStatus::updateOperational($id, true);
+                }
             }
         }
     }
 
-    echo json_encode($getModuleData);
+    if (isset($getModuleData)) {
+        echo json_encode($getModuleData);
+    }
 } catch (PDOException $e) {
     echo json_encode(['success' => false, 'message' => 'Erreur : ' . $e->getMessage()]);
 }

@@ -1,4 +1,4 @@
-<?php if (!is_null($moduleStatus || $getModule)) { ?>
+<?php if (!is_null($moduleStatus || !is_null($getModule))) { ?>
     <div class="row align-items-center">
         <h1 class="text-center mt-5">
             <?= $moduleStatus[0]->name ?>
