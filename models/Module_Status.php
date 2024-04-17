@@ -102,4 +102,63 @@ class ModuleStatus
 
         return $sth->fetchAll(PDO::FETCH_OBJ);
     }
+
+    public static function updateDuration(int $id): bool
+    {
+        $pdo = Database::connect();
+        $pdo->beginTransaction();
+
+        try {
+            // Récupérer la valeur actuelle du compteur duration
+            $sqlSelect = 'SELECT `duration` FROM `module_status` WHERE `id_modules` = :id FOR UPDATE';
+            $sthSelect = $pdo->prepare($sqlSelect);
+            $sthSelect->bindValue(':id', $id, PDO::PARAM_INT);
+            $sthSelect->execute();
+            $current = $sthSelect->fetchColumn();
+
+            // Incrémenter la valeur du compteur de 1
+            $newDuration = $current + 1;
+
+            // Mettre à jour le compteur duration dans la base de données
+            $sqlUpdate = 'UPDATE `module_status` SET `duration` = :duration WHERE `id_modules` = :id';
+            $sthUpdate = $pdo->prepare($sqlUpdate);
+            $sthUpdate->bindValue(':id', $id, PDO::PARAM_INT);
+            $sthUpdate->bindValue(':duration', $newDuration, PDO::PARAM_INT);
+            $sthUpdate->execute();
+
+            $pdo->commit();
+            return true;
+        } catch (PDOException $e) {
+            $pdo->rollBack();
+            return false;
+        }
+    }
+
+    public static function updateDataValue(int $id): bool
+    {
+        $pdo = Database::connect();
+        $pdo->beginTransaction();
+
+        try {
+            $sqlSelect = 'SELECT `data_count` FROM `module_status` WHERE `id_modules` = :id FOR UPDATE';
+            $sthSelect = $pdo->prepare($sqlSelect);
+            $sthSelect->bindValue(':id', $id, PDO::PARAM_INT);
+            $sthSelect->execute();
+            $current = $sthSelect->fetchColumn();
+
+            $newDataCount = $current + 1;
+
+            $sqlUpdate = 'UPDATE `module_status` SET `data_count` = :data_count WHERE `id_modules` = :id';
+            $sthUpdate = $pdo->prepare($sqlUpdate);
+            $sthUpdate->bindValue(':id', $id, PDO::PARAM_INT);
+            $sthUpdate->bindValue(':data_count', $newDataCount, PDO::PARAM_INT);
+            $sthUpdate->execute();
+
+            $pdo->commit();
+            return true;
+        } catch (PDOException $e) {
+            $pdo->rollBack();
+            return false;
+        }
+    }
 }

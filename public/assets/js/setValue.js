@@ -3,10 +3,10 @@ const setValue = () => {
     method: "POST",
   })
     .then((response) => {
-      response.json();
+      return response.json();
     })
     .then((data) => {
-      console.log(data);
+      document.getElementById("value").innerHTML = data.module_value;
     })
     .catch((error) => {
       console.error("error val : ", error);
@@ -15,4 +15,4 @@ const setValue = () => {
 
 setInterval(() => {
   setValue();
-}, 1000);
+}, 3600);

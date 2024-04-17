@@ -1,4 +1,4 @@
-<?php if(!is_null($moduleStatus || $getModule)) { ?>
+<?php if (!is_null($moduleStatus || $getModule)) { ?>
     <div class="row align-items-center">
         <h1 class="text-center mt-5">
             <?= $moduleStatus[0]->name ?>
@@ -18,10 +18,10 @@
                     <?php } else { ?>
                         <span class="text-danger fw-bold">Ne fonctionne pas</span>
                     <?php } ?>
-                    <span>Derniere donnée : <?= $getModule[0]->module_value ?></span>
-                    <span>Durée de fonctionnement : <?= $moduleStatus[0]->duration ?></span>
-                    <span>Nombre de données : <?= $moduleStatus[0]->data_count ?></span>
-                    <span>Derniere MAJ : <?= $moduleStatus[0]->updated_at ?></span>
+                    <span>Derniere donnée : <span id="value"></span></span>
+                    <span>Durée de fonctionnement : <span id="duration"></span></span>
+                    <span>Nombre de données : <span id="data_count"></span></span>
+                    <span>Derniere MAJ : <span id="last_updated"></span></span>
                 </div>
             </div>
         </div>
