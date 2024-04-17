@@ -12,7 +12,6 @@ CREATE TABLE module_data(
    module_timestamp DATETIME,
    id_modules INT NOT NULL,
    PRIMARY KEY(id_module_data),
-   UNIQUE(id_modules),
    FOREIGN KEY(id_modules) REFERENCES modules(id_modules)
 );
 
@@ -24,6 +23,5 @@ CREATE TABLE module_status(
    updated_at DATETIME,
    id_modules INT NOT NULL,
    PRIMARY KEY(id_module_status),
-   UNIQUE(id_modules),
    FOREIGN KEY(id_modules) REFERENCES modules(id_modules)
 );

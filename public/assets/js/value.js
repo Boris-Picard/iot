@@ -1,6 +1,7 @@
 let timestamps = [];
 let values = [];
 let myChart;
+let backgroundColors = [];
 
 const value = () => {
   const urlParams = new URLSearchParams(window.location.search);
