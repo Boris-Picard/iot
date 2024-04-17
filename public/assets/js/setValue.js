@@ -18,4 +18,4 @@ const setValue = () => {
 
 setInterval(() => {
   setValue();
-}, 60000);
+}, 30000);
