@@ -62,14 +62,15 @@ class ModuleData
         return $sth->rowCount() > 0;
     }
 
-    public static function getAll(int $id): array|null
+    public static function getAll(int $id, string $order = "ASC"): array|null
     {
         $pdo = Database::connect();
 
         $sql = 'SELECT * 
         FROM `module_data`
-        WHERE `module_data`.`id_modules`=:id;';
+        WHERE `module_data`.`id_modules`=:id ';
 
+        $order === "ASC" ? $sql .= ' ORDER BY `module_timestamp` ASC ' : $sql .= ' ORDER BY `module_timestamp` DESC ';
         $sth = $pdo->prepare($sql);
 
         $sth->bindValue(':id', $id, PDO::PARAM_INT);

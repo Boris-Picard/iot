@@ -1,13 +1,13 @@
-<?php 
-session_start();
+<?php
+// session_start();
 require_once __DIR__ . '/../../models/Module.php';
 require_once __DIR__ . '/../../models/Module_Data.php';
+require_once __DIR__ . '/ajax-setValue.php';
 
 $listPage = true;
 try {
     // on récupère la liste de tous les modules 
     $lists = Module::getAll();
-
 } catch (PDOException $e) {
     die('error : ' . $e->getMessage());
 }

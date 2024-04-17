@@ -84,4 +84,22 @@ class ModuleStatus
 
         return $sth->rowCount() > 0;
     }
+
+    public static function get(int $id): array|null
+    {
+        $pdo = Database::connect();
+
+        $sql = 'SELECT * 
+        FROM `module_status`
+        INNER JOIN `modules` ON `modules`.`id_modules`= `module_status`.`id_modules`
+        WHERE `module_status`.`id_modules`=:id;';
+
+        $sth = $pdo->prepare($sql);
+
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+
+        $sth->execute();
+
+        return $sth->fetchAll(PDO::FETCH_OBJ);
+    }
 }
