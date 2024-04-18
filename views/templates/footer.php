@@ -7,6 +7,7 @@
 </script>
 <script src="/public/assets/js/setValue.js"></script>
 <script src="/public/assets/js/setDuration.js"></script>
+<script src="/public/assets/js/listValue.js"></script>
 <?php if (isset($viewModule)) { ?>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
     <script src="/public/assets/js/value.js"></script>

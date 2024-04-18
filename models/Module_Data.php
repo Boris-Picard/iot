@@ -80,6 +80,26 @@ class ModuleData
         return $sth->fetchAll(PDO::FETCH_OBJ);
     }
 
+    public static function getAllList(int $id, string $order = "ASC"): array|null
+    {
+        $pdo = Database::connect();
+
+        $sql = 'SELECT * 
+        FROM `module_data`
+        INNER JOIN `modules` ON `modules`.`id_modules`= `module_data`.`id_modules`
+        INNER JOIN `module_status` ON `module_status`.`id_modules`=`module_data`.`id_modules`
+        WHERE `module_data`.`id_modules`=:id ';
+
+        $order === "ASC" ? $sql .= ' ORDER BY `module_timestamp` ASC ' : $sql .= ' ORDER BY `module_timestamp` DESC ';
+        $sth = $pdo->prepare($sql);
+
+        $sth->bindValue(':id', $id, PDO::PARAM_INT);
+
+        $sth->execute();
+
+        return $sth->fetchAll(PDO::FETCH_OBJ);
+    }
+
     public static function get(int $id): object|null
     {
         $pdo = Database::connect();

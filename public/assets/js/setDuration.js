@@ -36,7 +36,7 @@ const setDuration = () => {
           isOperational.classList.remove("text-danger");
           isOperational.classList.add("text-success");
         } else {
-          isOperational.innerHTML = "Ne fonctionne pas";
+          isOperational.innerHTML = "Erreur";
           isOperational.classList.remove("text-success");
           isOperational.classList.add("text-danger");
         }
