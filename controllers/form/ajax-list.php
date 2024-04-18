@@ -9,7 +9,7 @@ try {
     $allData = [];
 
     foreach ($ids as $id) {
-        $getData = ModuleData::getAllList($id, 'ASC');
+        $getData = ModuleData::getAllList($id, 'DESC');
         $allData[] = $getData;
     }
     echo json_encode($allData);
