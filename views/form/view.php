@@ -21,5 +21,16 @@
                 </div>
             </div>
         </div>
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div class="toast bg-danger" role="alert" aria-live="assertive" aria-atomic="true" id="toastOperational">
+                <div class="toast-header justify-content-between">
+                    <small class="text-body-secondary" id="toastTempValue">Défaillance du module</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body fw-bold text-white">
+                    Erreur de température au-delà de 50 degrés.
+                </div>
+            </div>
+        </div>
     </div>
 <?php } ?>

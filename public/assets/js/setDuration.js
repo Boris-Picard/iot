@@ -41,6 +41,17 @@ const setDuration = () => {
           isOperational.classList.add("text-danger");
         }
       }
+
+      let toast = document.getElementById("toastOperational");
+      if (toast) {
+        if (data[0].is_operational === 0) {
+          toast.classList.remove("d-none");
+          toast.classList.add("d-block");
+        } else {
+          toast.classList.remove("d-block");
+          toast.classList.add("d-none");
+        }
+      }
     })
     .catch((error) => {
       console.error("error val : ", error);

@@ -1,4 +1,4 @@
-    <table class="table shadow-lg table-responsive">
+    <table class="table shadow-lg table-responsive mt-5">
         <thead>
             <tr>
                 <th scope="col">Nom</th>
